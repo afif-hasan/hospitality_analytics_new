@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: hospitality_db
+    environment:
+      POSTGRES_USER: hospitality_user
+      POSTGRES_PASSWORD: hospitality_pass
+      POSTGRES_DB: hospitality_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hospitality_user -d hospitality_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build: .
+    container_name: hospitality_web
+    restart: on-failure
+    command: >
+      sh -c "alembic upgrade head &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000"
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+asyncpg://hospitality_user:hospitality_pass@db:5432/hospitality_db
+      SECRET_KEY: your-super-secret-key-change-this-in-production
+      ACCESS_TOKEN_EXPIRE_MINUTES: 60
+      DEBUG: "False"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

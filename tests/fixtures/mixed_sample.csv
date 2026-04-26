@@ -1,0 +1,10 @@
+property_name,category,price,quantity,date
+Grand Hotel,room booking,150.00,2,2026-02-01
+Ocean Resort,food,45.50,4,2026-02-02
+Bad Row Hotel,room booking,-50.00,2,2026-02-03
+City Inn,service,30.00,1,2026-02-04
+,,,,
+Mountain Lodge,room booking,200.00,1,2026-02-06
+Grand Hotel,food,22.00,not_a_number,2026-02-07
+Ocean Resort,room booking,175.00,2,2026-02-08
+City Inn,food,15.00,5,bad-date
