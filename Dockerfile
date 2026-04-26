@@ -4,7 +4,6 @@ WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    DATABASE_URL=postgresql+asyncpg://hospitality_user:hospitality_pass@172.17.0.1:5432/hospitality_db \
     SECRET_KEY=default-secret-key-change-in-production \
     ACCESS_TOKEN_EXPIRE_MINUTES=60 \
     DEBUG=False
