@@ -116,35 +116,51 @@ Swagger UI is available at `http://127.0.0.1:8000/docs`
 
 ## Running with Docker
 
-### Option 1 — Docker only (recruiter command)
+### Recommended — docker-compose (full stack)
 
-```bash
-docker build -t fastapi-app .
-docker run -p 8000:8000 fastapi-app
-```
-
-### Option 2 — docker-compose (full stack with PostgreSQL)
+This is the correct way to run the project. Docker handles all networking
+internally — no IP addresses or external PostgreSQL needed.
 
 ```bash
 docker-compose up --build
 ```
 
-This starts both the PostgreSQL container and the web container.
-Alembic migrations run automatically on startup.
+This automatically:
+- Starts a PostgreSQL 16 container
+- Runs Alembic migrations
+- Starts the FastAPI server on port 8000
+
+API available at `http://127.0.0.1:8000`
+Swagger UI at `http://127.0.0.1:8000/docs`
 
 To stop:
-
 ```bash
 docker-compose down
 ```
 
 To stop and remove all data:
-
 ```bash
 docker-compose down -v
 ```
 
 ---
+
+### Single container (recruiter command)
+
+The recruiter's exact commands also work. You must supply `DATABASE_URL`
+pointing to an accessible PostgreSQL instance:
+
+```bash
+docker build -t fastapi-app .
+
+docker run -p 8000:8000 \
+  -e DATABASE_URL=postgresql+asyncpg://user:pass@host:5432/dbname \
+  -e SECRET_KEY=your-secret-key \
+  fastapi-app
+```
+
+> Note: For local development, use docker-compose instead. The single
+> container command requires an externally accessible PostgreSQL instance.
 
 ## API Endpoints
 

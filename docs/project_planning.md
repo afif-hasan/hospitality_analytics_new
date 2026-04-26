@@ -229,7 +229,8 @@ between tests.
 | No role-based access control      | All authenticated users have equal access          |
 | No rate limiting                  | Could be added via slowapi in a future iteration   |
 | No refresh tokens                 | JWT expires and user must log in again             |
-| Docker build requires network     | `--network host` needed on some Linux configurations|
+| Docker build requires network     | `--network host` needed on some Linux configurations |
+| Single container needs external DB| Use docker-compose for zero-config local deployment  |
 | No email verification             | User registration is immediate with no confirmation|
 
 ---
