@@ -28,8 +28,10 @@
 | version_num | VARCHAR(32) | PRIMARY KEY  |
 
 ## Relationships
+```
 users ──────────────── transactions
 (no FK relationship)
+```
 Users authenticate to access the API.
 Transactions are not owned by a specific user —
 they represent company-wide operational data.

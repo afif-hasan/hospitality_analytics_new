@@ -49,14 +49,17 @@ SQLite with aiosqlite for the test suite.
 
 ## Module Structure
 
+```
 Each module follows the same internal structure:
 module/
 ├── model.py       # SQLAlchemy ORM class (the M)
 ├── schemas.py     # Pydantic models (the V)
 ├── controller.py  # FastAPI router (the C)
 └── service.py     # Business logic (service layer)
+```
 
 ## Request Lifecycle
+```
 Client
 ↓
 RequestIDMiddleware   (assigns x-request-id)
@@ -74,6 +77,7 @@ SQLAlchemy ORM        (generates SQL)
 PostgreSQL            (executes query)
 ↑
 Response flows back up through the same stack
+```
 
 ## Bonus Features Implemented
 

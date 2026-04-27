@@ -1,4 +1,5 @@
 # Project Structure
+```
 hospitality-analytics/
 │
 ├── app/                            # Application source code
@@ -80,6 +81,7 @@ hospitality-analytics/
 ├── Dockerfile                      # Single-container Docker image
 ├── docker-compose.yml              # Full stack (web + PostgreSQL)
 └── README.md                       # Project overview and setup guide
+```
 
 ## Design Principles
 
