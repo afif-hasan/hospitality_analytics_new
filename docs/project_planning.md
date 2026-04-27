@@ -56,19 +56,17 @@ to final submission.
 ### Why PostgreSQL over SQLite?
 - Production-grade relational database
 - Better concurrency handling with multiple connections
-- Shows real backend maturity in the submission
 - docker-compose setup demonstrates full-stack deployment knowledge
 - SQLite is still used for the test suite to keep tests self-contained
 
 ### Why SQLAlchemy 2.0 async?
 - Modern async ORM that pairs natively with FastAPI's async model
-- `Mapped[]` type annotations (SQLAlchemy 2.0 style) show current knowledge
+- `Mapped[]` type annotations (SQLAlchemy 2.0 style)
 - Single session factory shared across all modules
 
 ### Why Alembic?
 - Production-grade migration management
-- Demonstrates awareness that `create_all()` is not acceptable in real projects
-- Migration history gives reviewers confidence in DB change management
+- Demonstrates that `create_all()` is not acceptable in real projects
 
 ### Why bcrypt directly over passlib?
 - `passlib` has a known compatibility issue with `bcrypt` 4.x on Python 3.12
@@ -227,11 +225,9 @@ between tests.
 | Limitation                        | Notes                                              |
 |-----------------------------------|----------------------------------------------------|
 | No role-based access control      | All authenticated users have equal access          |
-| No rate limiting                  | Could be added via slowapi in a future iteration   |
 | No refresh tokens                 | JWT expires and user must log in again             |
 | Docker build requires network     | `--network host` needed on some Linux configurations |
-| Single container needs external DB| Use docker-compose for zero-config local deployment  |
-| No email verification             | User registration is immediate with no confirmation|
+| Single container needs external DB| Use docker-compose for zero-config local deployment |
 
 ---
 
@@ -241,9 +237,5 @@ between tests.
 |------------------------------|--------------------------------------------------|
 | Role-based access control    | Admin vs read-only user roles                    |
 | Refresh tokens               | Longer sessions without re-login                 |
-| Rate limiting                | Prevent API abuse with slowapi                   |
-| Background CSV processing    | Async task queue for large CSV files             |
 | Monthly trend analytics      | Revenue over time endpoint                       |
 | Property-level analytics     | Drill-down endpoint per property                 |
-| CI/CD pipeline               | GitHub Actions for automated test runs           |
-| Production secrets management| HashiCorp Vault or AWS Secrets Manager           |

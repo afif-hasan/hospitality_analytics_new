@@ -20,7 +20,7 @@ to keep controllers testable and business logic reusable.
 ## Layer Responsibilities
 
 ### Client layer
-Swagger UI, curl, Postman, or any HTTP client.
+Swagger UI, curl, httpx AsyncClient for testing
 
 ### Middleware layer
 Every request passes through:
