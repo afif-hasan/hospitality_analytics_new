@@ -18,12 +18,15 @@ retrieving, and analyzing transaction data across hotels, resorts, and restauran
 This project follows **MVC architecture with a modular codebase**. Each feature
 (auth, transactions, analytics) is a self-contained module with its own Model,
 View (schema), Controller (router), and Service (business logic).
+
+```
 app/
 ├── core/          # Shared infrastructure (config, db, security, middleware)
 └── modules/
-├── auth/          # User registration, login, JWT
-├── transactions/  # CRUD, bulk insert, CSV upload
-└── analytics/     # Aggregation queries and business insights
+    ├── auth/          # User registration, login, JWT
+    ├── transactions/  # CRUD, bulk insert, CSV upload
+    └── analytics/     # Aggregation queries and business insights
+```
 
 See `docs/architecture.md` for the full breakdown.
 
